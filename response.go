@@ -1,5 +1,7 @@
 package main
 
+/* Status */
+
 type VideoEffects struct {
 	Gamma float64 `xml:"gamma"`
 	Contrast float64 `xml:"contrast"`
@@ -61,4 +63,33 @@ type StatusResult struct {
 	Rate int `xml:"rate"`
 	Information []Category `xml:"information>category"`
 	Stats Stats `xml:"stats"`
+}
+
+/* Playlist */
+
+type PlaylistItem struct {
+	Id int `xml:"id,attr"`
+	Name string `xml:"name,attr"`
+	Duration int `xml:"duration,attr"`
+	URI string `xml:"uri,attr"` 
+}
+
+type PlaylistResult struct {
+	Name string `xml:"name,attr"`
+	Items []PlaylistItem `xml:"leaf"`
+}
+
+/* Browse */
+
+type DirectoryEntry struct {
+	UID int `xml:"uid,attr"`
+	GID int `xml:"gid,attr"`
+	Mode int `xml:"mode,attr"`
+	Size int `xml:"size,attr"`
+	CreationTime int64 `xml:"creation_time,attr"`
+	ModificationTime int64 `xml:"modification_time,attr"`
+	AccessTime int64 `xml:"access_time,attr"`
+	Type string `xml:"type,attr"`
+	Name string `xml:"name,attr"`
+	URI string `xml:"uri,attr"`
 }
